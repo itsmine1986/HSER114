@@ -120,7 +120,7 @@
     }
   },
   "variables": {
-    "apiVersionStorage": "2016-01-01",
+    "apiVersionStorage": "2018-04-01",
     "storageNamePrefix": "[concat('sasbpamaigacr94vco','vm')]",
     "witnessStorageName": "sasbpama01igacr4orut5cw",
     "witnessStorageType": "StandardSSD_LRS",
@@ -141,30 +141,30 @@
             "location": "[resourceGroup().location]",
             "properties": {}
         },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('witnessStorageName')]",
-            "apiVersion": "2016-01-01",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "[variables('witnessStorageType')]"
-            },
-            "kind": "Storage"
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('witnessStorageName')]",
+        "apiVersion": "2018-04-01",
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "[variables('witnessStorageType')]"
         },
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat(variables('storageNamePrefix'),copyindex())]",
-            "apiVersion": "2016-01-01",
-            "copy": {
-                "name": "storageAccountLoop",
-                "count": "[parameters('vmCount')]"
-            },
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "[parameters('storageAccountType')]"
-            },
-            "kind": "Storage"
+        "kind": "Storage"
+      },
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[concat(variables('storageNamePrefix'),copyindex())]",
+        "apiVersion": "2018-04-01",
+        "copy": {
+          "name": "storageAccountLoop",
+          "count": "[parameters('vmCount')]"
         },
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "[parameters('storageAccountType')]"
+        },
+        "kind": "Storage"
+      },
         {
         "name": "[concat('Nc',parameters('namePrefix'),0,add(parameters('vmStartingindex'),copyindex()),'I01')]",
         "type": "Microsoft.Network/networkInterfaces",
@@ -190,7 +190,7 @@
       },
       {
         "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2015-01-01",
+        "apiVersion": "2018-04-01",
         "copy": {
           "name": "virtualMachineLoop",
           "count": "[parameters('vmCount')]"
