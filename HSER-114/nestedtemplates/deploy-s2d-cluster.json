@@ -5,7 +5,7 @@
     "namePrefix": {
       "type": "string",
       "minLength": 3,
-      "maxLength": 8,
+      "maxLength": 9,
       "metadata": {
         "description": "Naming prefix for each new resource created. 3-char min, 8-char max, lowercase alphanumeric"
       }
@@ -123,7 +123,7 @@
     "apiVersionStorage": "2016-01-01",
     "storageNamePrefix": "[concat('sasbpamaigacr94vco','vm')]",
     "witnessStorageName": "sasbpama01igacr4orut5cw",
-    "witnessStorageType": "Standard_LRS",
+    "witnessStorageType": "StandardSSD_LRS",
     "vmNamePrefix": "[concat(parameters('namePrefix'))]",
     "vmAvailabilitySetName": "AsSBpamA04",
     "clusterName": "CLWSBPAMA01I",
@@ -335,7 +335,7 @@
         }
       }
     ]
-    ////"outputs": {
+    //"outputs": {
     //    "sofsName": {
     //        "type": "string",
     //        "value": "[parameters('sofsName')]"
