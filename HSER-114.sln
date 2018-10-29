@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "HSER-114", "HSER-114\HSER-114.deployproj", "{47538DE1-2E1C-4C14-A6E0-FD89A15A7E6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47538DE1-2E1C-4C14-A6E0-FD89A15A7E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47538DE1-2E1C-4C14-A6E0-FD89A15A7E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47538DE1-2E1C-4C14-A6E0-FD89A15A7E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47538DE1-2E1C-4C14-A6E0-FD89A15A7E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4B94C76-1966-4EE8-9F70-82434171DBC4}
+	EndGlobalSection
+EndGlobal
