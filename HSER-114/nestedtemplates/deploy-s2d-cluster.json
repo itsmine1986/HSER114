@@ -190,7 +190,7 @@
       },
       {
         "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2018-01-01",
+        "apiVersion": "2017-05-10",
         "copy": {
           "name": "virtualMachineLoop",
           "count": "[parameters('vmCount')]"
