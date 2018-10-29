@@ -32,7 +32,7 @@
     "storageAccountType": {
       "type": "string",
       "allowedValues": [
-        "Standard_LRS",
+        "StandardSSD_LRS",
         "Standard_GRS",
         "Standard_RAGRS",
         "Premium_LRS"
