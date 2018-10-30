@@ -169,7 +169,7 @@
         "name": "[concat('Nc',parameters('namePrefix'),0,add(parameters('vmStartingindex'),copyindex()),'I01')]",
         "type": "Microsoft.Network/networkInterfaces",
         "location": "[resourceGroup().location]",
-        "apiVersion": "2015-01-01",
+        "apiVersion": "2015-06-15",
         "copy": {
           "name": "nicLoop",
           "count": "[parameters('vmCount')]"
