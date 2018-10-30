@@ -32,7 +32,7 @@
     "storageAccountType": {
       "type": "string",
       "allowedValues": [
-        "StandardSSD_LRS",
+        "Standard_LRS",
         "Standard_GRS",
         "Standard_RAGRS",
         "Premium_LRS"
@@ -123,7 +123,7 @@
     "apiVersionStorage": "2018-04-01",
     "storageNamePrefix": "[concat('sasbpamaigacr94vco','vm')]",
     "witnessStorageName": "sasbpama01igacr4orut5cw",
-    "witnessStorageType": "StandardSSD_LRS",
+    "witnessStorageType": "Standard_LRS",
     "vmNamePrefix": "[concat(parameters('namePrefix'))]",
     "vmAvailabilitySetName": "AsSBpamA04",
     "clusterName": "CLWSBPAMA01I",
