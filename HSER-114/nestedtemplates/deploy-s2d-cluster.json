@@ -120,7 +120,7 @@
     }
   },
   "variables": {
-    "apiVersionStorage": "2018-04-01",
+    "apiVersionStorage": "2018-02-01",
     "storageNamePrefix": "[concat('sasbpamaigacr94vco','vm')]",
     "witnessStorageName": "sasbpama01igacr4orut5cw",
     "witnessStorageType": "Standard_LRS",
@@ -144,7 +144,7 @@
       {
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[variables('witnessStorageName')]",
-        "apiVersion": "2018-04-01",
+        "apiVersion": "2018-02-01",
         "location": "[resourceGroup().location]",
         "sku": {
           "name": "[variables('witnessStorageType')]"
@@ -154,7 +154,7 @@
       {
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[concat(variables('storageNamePrefix'),copyindex())]",
-        "apiVersion": "2018-04-01",
+        "apiVersion": "2018-02-01",
         "copy": {
           "name": "storageAccountLoop",
           "count": "[parameters('vmCount')]"
