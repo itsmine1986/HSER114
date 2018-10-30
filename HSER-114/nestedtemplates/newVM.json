@@ -23,6 +23,15 @@
     "vmSize": {
       "type": "string"
     },
+    "vmCount": {
+      "type": "int",
+      "defaultValue": 2,
+      "minValue": 2,
+      "maxValue": 3,
+      "metadata": {
+        "description": "Number of S2D VMs to be created in cluster (Min=2, Max=3)"
+      }
+    },
     "vmDiskCount": {
       "type": "int"
     },
@@ -74,71 +83,75 @@
                 "templateLink": {
                     "uri": "[variables('diskSelectionTemplateUri')]"
                 },
-                "parameters": {
-                    "vmDiskCount": {
-                        "value": "[parameters('vmDiskCount')]"
-                    },
-                    "vmDiskSize": {
-                        "value": "[parameters('vmDiskSize')]"
-                    },
-                  "diskCaching": {
-                    "value": "ReadWrite"
-                  },
-                    "storageAccountUri": {
-                        "value": "[parameters('storageAccountUri')]"
-                    },
-                  "diskNamingPrefix": {
-                    "value": "[concat('MdC',parameters('namePrefix'),0)]"
-                  }
+              "parameters": {
+                "vmDiskCount": {
+                  "value": "[parameters('vmDiskCount')]"
+                },
+                "vmDiskSize": {
+                  "value": "[parameters('vmDiskSize')]"
+                },
+                "diskCaching": {
+                  "value": "ReadWrite"
+                },
+                "storageAccountUri": {
+                  "value": "[parameters('storageAccountUri')]"
+                },
+                "diskNamingPrefix": {
+                  "value": "CLWSBPAMA01I"
                 }
+              }
             }
         },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2015-06-15",
-            "location": "[resourceGroup().location]",
-            "name": "[parameters('vmName')]",
-            "dependsOn": [
-                "[concat('Microsoft.Resources/deployments/',parameters('vmName'),'-diskSelection')]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "availabilitySet": {
-                    "id": "[resourceId('Microsoft.Compute/availabilitySets/', parameters('vmAvailabilitySetName'))]"
-                },
-                "osProfile": {
-                    "computerName": "[parameters('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "[parameters('imagePublisher')]",
-                        "offer": "[parameters('imageOffer')]",
-                        "sku": "[parameters('imageSku')]",
-                        "version": "[parameters('imageVersion')]"
-                    },
-                  "osDisk": {
-                    "name": "[concat('MdO',parameters('namePrefix'),0,add(parameters('vmStartingindex'),copyindex()),'I01')]",
-                    "managedDisk": {
-                      "storageAccountType": "StandardSSD_LRS"
-                    },
-                    "caching": "ReadWrite",
-                    "createOption": "FromImage"
-                  },
-                    "dataDisks": "[reference(concat(parameters('vmName'),'-diskSelection')).outputs.dataDiskArray.value]"
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                      {
-                        "id": "[resourceId('Microsoft.Network/networkInterfaces',concat('Nc',parameters('namePrefix'),0,add(parameters('vmStartingindex'),copyindex()),'I01'))]"
-                      }
-                    ]
-                }
-            }
+      {
+        "type": "Microsoft.Compute/virtualMachines",
+        "apiVersion": "2015-06-15",
+        "location": "[resourceGroup().location]",
+        "name": "[parameters('vmName')]",
+        "copy": {
+          "name": "virtualMachineLoop",
+          "count": "[parameters('vmCount')]"
+        },
+        "dependsOn": [
+          "[concat('Microsoft.Resources/deployments/',parameters('vmName'),'-diskSelection')]"
+        ],
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "[parameters('vmSize')]"
+          },
+          "availabilitySet": {
+            "id": "[resourceId('Microsoft.Compute/availabilitySets/', parameters('vmAvailabilitySetName'))]"
+          },
+          "osProfile": {
+            "computerName": "[parameters('vmName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]"
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[parameters('imagePublisher')]",
+              "offer": "[parameters('imageOffer')]",
+              "sku": "[parameters('imageSku')]",
+              "version": "[parameters('imageVersion')]"
+            },
+            "osDisk": {
+              "name": "[concat('MdO',parameters('namePrefix'),0,add(parameters('vmStartingindex'),copyindex()),'I01')]",
+              "managedDisk": {
+                "storageAccountType": "StandardSSD_LRS"
+              },
+              "caching": "ReadWrite",
+              "createOption": "FromImage"
+            },
+            "dataDisks": "[reference(concat(parameters('vmName'),'-diskSelection')).outputs.dataDiskArray.value]"
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces',concat('Nc',parameters('namePrefix'),0,add(parameters('vmStartingindex'),copyindex()),'I01'))]"
+              }
+            ]
+          }
         }
+      }
     ],
     "outputs": {
         "vmName": {

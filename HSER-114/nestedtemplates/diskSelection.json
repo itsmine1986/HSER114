@@ -31,22 +31,22 @@
     "variables": {
         "diskArray": [
           {
-            "name": "[concat(parameters('diskNamingPrefix'),00,'I01')]",
+            "name": "[concat(parameters('diskNamingPrefix'),'01')]",
 
             "diskSizeGB": "[parameters('vmDiskSize')]",
             "lun": 0,
             "vhd": {
-              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),00,'I01.vhd')]"
+              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),'01.vhd')]"
             },
             "caching": "[parameters('diskCaching')]",
             "createOption": "Empty"
           },
           {
-            "name": "[concat(parameters('diskNamingPrefix'),01,'I01')]",
+            "name": "[concat(parameters('diskNamingPrefix'),'02')]",
             "diskSizeGB": "[parameters('vmDiskSize')]",
             "lun": 1,
             "vhd": {
-              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),01,'I01.vhd')]"
+              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),'02.vhd')]"
             },
             "caching": "[parameters('diskCaching')]",
             "createOption": "Empty"
