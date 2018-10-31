@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namePrefix": {
+      "value": "VMWBPAMA"
+    },
+    "existingDomainName": {
+      "value": "adm.scalesquad.io"
+    },
+    "adminUsername": {
+      "value": "ssubramanian"
+    },
+    "existingVirtualNetworkRGName": {
+      "value": "RgadminZone"
+    },
+    "existingVirtualNetworkName": {
+      "value": "VnAdminzone"
+    },
+    "existingSubnetName": {
+      "value": "RDSSubnet"
+    },
+    "vmSize": {
+      "value": "Standard_B2ms"
+    },
+    "vmDiskSize": {
+      "value": 128
+    },
+    "adminPassword": {
+      "value": "s@nth0sh12345"
+    }
+  }
+}
