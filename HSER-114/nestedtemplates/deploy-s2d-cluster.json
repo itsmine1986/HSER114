@@ -141,7 +141,7 @@
             "location": "[resourceGroup().location]",
             "properties": {}
         },
-      {
+        {
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[variables('witnessStorageName')]",
         "apiVersion": "2016-01-01",

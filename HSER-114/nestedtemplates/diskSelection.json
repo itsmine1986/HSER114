@@ -31,32 +31,32 @@
     "variables": {
         "diskArray": [
           {
-            "name": "[concat(parameters('diskNamingPrefix'),'01')]",
+            "name": "[concat('MdD',parameters('diskNamingPrefix'),'01')]",
 
             "diskSizeGB": "[parameters('vmDiskSize')]",
             "lun": 0,
             "vhd": {
-              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),'01.vhd')]"
+              "uri": "[concat(parameters('storageAccountUri'),'vhds/','MdD',parameters('diskNamingPrefix'),'01.vhd')]"
             },
             "caching": "[parameters('diskCaching')]",
             "createOption": "Empty"
           },
           {
-            "name": "[concat(parameters('diskNamingPrefix'),'02')]",
+            "name": "[concat('MdD',parameters('diskNamingPrefix'),'02')]",
             "diskSizeGB": "[parameters('vmDiskSize')]",
             "lun": 1,
             "vhd": {
-              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),'02.vhd')]"
+              "uri": "[concat(parameters('storageAccountUri'),'vhds/','MdD',parameters('diskNamingPrefix'),'02.vhd')]"
             },
             "caching": "[parameters('diskCaching')]",
             "createOption": "Empty"
           },
           {
-            "name": "[concat(parameters('diskNamingPrefix'),07,'I01')]",
+            "name": "[concat('MdD',parameters('diskNamingPrefix'),'03')]",
             "diskSizeGB": "[parameters('vmDiskSize')]",
             "lun": 2,
             "vhd": {
-              "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),07,'I01.vhd')]"
+              "uri": "[concat(parameters('storageAccountUri'),'vhds/','MdD',parameters('diskNamingPrefix'),'03.vhd')]"
             },
             "caching": "[parameters('diskCaching')]",
             "createOption": "Empty"
@@ -65,9 +65,9 @@
                 "name": "[concat(parameters('diskNamingPrefix'), 'disk3')]",
                 "diskSizeGB": "[parameters('vmDiskSize')]",
                 "lun": 3,
-                "vhd": {
-                    "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),'disk3.vhd')]"
-                },
+              "vhd": {
+                "uri": "[concat(parameters('storageAccountUri'),'vhds/',parameters('diskNamingPrefix'),'disk3.vhd')]"
+              },
                 "caching": "None",
                 "createOption": "Empty"
             },
