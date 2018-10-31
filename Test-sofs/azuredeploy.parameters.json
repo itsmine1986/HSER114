@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namePrefix": {
-      "value": "VMWBPAMA"
+      "value": "sofs"
     },
     "existingDomainName": {
       "value": "adm.scalesquad.io"
@@ -28,6 +28,12 @@
     },
     "adminPassword": {
       "value": "s@nth0sh12345"
+    },
+    "sofsName": {
+      "value": "CLWSBPAMA02I"
+    },
+    "shareName": {
+      "value": "UPDStorage"
     }
   }
 }
